@@ -1,0 +1,17 @@
+- hosts: all
+  tasks:
+    - name: "Installing the web-server"
+      package: 
+        name: "httpd"
+        state: present
+
+    - name: "Copying the web pages"
+      copy: 
+        src: "/root/demo.html"
+        dest: "/var/www/html/web.html"
+
+    - name: "Starting the web-server"
+      service:
+        name: "httpd"
+        state: started
+        enabled: True
